@@ -1,0 +1,17 @@
+.challenge-container {
+  background-color: #f9e3c0;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 10px 0;
+  font-family: "Pretendard", sans-serif;
+  margin-bottom: 20px; /* 아래쪽 간격 */
+}
+
+.challenge-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.challenge-text {
+  color: #333;
+}

@@ -1,0 +1,18 @@
+.user-info {
+  width: 100%; /* 부모의 전체 너비 사용 */
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 왼쪽 정렬 */
+  text-align: left; /* 텍스트 왼쪽 정렬 */
+}
+
+.username {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.user-id {
+  color: white;
+}

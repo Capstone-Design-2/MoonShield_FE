@@ -1,0 +1,27 @@
+/* LoginButton.css */
+.kakao-login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px; /* 버튼 너비 */
+  height: 45px; /* 버튼 높이 */
+  background-color: #fee500; /* 카카오 노란색 */
+  color: #3a1d1d; /* 텍스트 색상 */
+  font-weight: bold;
+  font-size: 13px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kakao-login-button:hover {
+  background-color: #ffeb3b; /* 호버 효과 */
+}

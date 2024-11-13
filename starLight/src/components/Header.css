@@ -1,0 +1,13 @@
+.header {
+  padding: 15px 0;
+  text-align: center;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 20px;
+}
+
+.header-title {
+  font-size: 24px;
+  color: #ffa600; /* 텍스트 색상만 설정 */
+  font-family: "Pretendard", sans-serif;
+  font-weight: bold;
+}
