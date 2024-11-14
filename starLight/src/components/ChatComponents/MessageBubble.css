@@ -1,0 +1,20 @@
+.message-bubble {
+  max-width: 70%;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.message-bubble.user {
+  background-color: #fef01b; /* 노란색 */
+  align-self: flex-end;
+  color: #333;
+}
+
+.message-bubble.bot {
+  background-color: #f2f2f2; /* 연한 회색 */
+  align-self: flex-start;
+  color: #333;
+}

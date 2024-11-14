@@ -1,0 +1,110 @@
+/* 전체 챗봇 컴포넌트를 감싸는 컨테이너 스타일 */
+#Chatbot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px; /* 최대 너비 고정 */
+  margin: 0 auto;
+  padding: 20px;
+  padding-bottom: 40px; /* 하단 여백 추가 */
+  box-shadow: rgba(100, 100, 100, 0.2) 0px 0px 29px 0px;
+  background-color: white;
+  border-radius: 10px;
+  min-height: 600px; /* 최소 높이를 600px로 설정하여 더 크게 만듦 */
+}
+
+/* 챗봇 제목 스타일 */
+.chatbot-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* 고정된 크기의 채팅 창 스타일 */
+.chatDiv {
+  width: 100%;
+  height: 500px; /* 채팅창 높이를 500px로 늘림 */
+  overflow-y: auto; /* 수직 스크롤 활성화 */
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 메시지 스타일 */
+.message {
+  max-width: 70%;
+  padding: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+/* 사용자 메시지 스타일 (오른쪽 하단 정렬, 노란색 배경) */
+.message.user {
+  background-color: #fef01b;
+  align-self: flex-end;
+  color: #333;
+  border-radius: 10px 0 10px 10px;
+  text-align: right;
+}
+
+/* 챗봇 메시지 스타일 (왼쪽 상단 정렬, 회색 배경) */
+.message.bot {
+  background-color: #f2f2f2;
+  align-self: flex-start;
+  color: #333;
+  border-radius: 0 10px 10px 10px;
+  text-align: left;
+}
+
+/* 메시지 대기 중 텍스트 스타일 */
+.messageWait {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+/* 입력창과 전송 버튼을 감싸는 컨테이너 */
+.inputDiv {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 0 0 10px 10px;
+}
+
+/* 메시지 입력 필드 스타일 (textarea로 변경) */
+.chatInput {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  resize: none; /* 사용자가 크기를 조절하지 못하도록 설정 */
+  min-height: 40px; /* 최소 높이 */
+  max-height: 100px; /* 최대 높이 */
+  overflow-y: auto; /* 텍스트가 많아지면 스크롤 생성 */
+}
+
+/* 전송 버튼 스타일 */
+.inputDiv button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  background-color: #fef01b;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.inputDiv button:hover {
+  background-color: #ffd600; /* 호버 시 조금 더 진한 노란색 */
+}

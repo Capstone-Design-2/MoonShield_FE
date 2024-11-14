@@ -6,23 +6,26 @@
 
 html,
 body {
-  margin: 0px;
+  margin: 0;
   width: 100%;
-  background-color: rgb(245, 245, 245);
+  background-color: #f9e3c0;
   display: flex;
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: flex-start; /* 수직 정렬 (필요에 따라 변경) */
+  min-height: 100vh; /* 화면 높이 전체 사용 */
 }
 
 #root {
   background-color: white;
-  max-width: 600px;
+  max-width: 500px !important;
   width: 100%;
-  margin: 0 auto;
   min-height: 100vh;
   height: 100%;
   box-shadow: rgba(100, 100, 100, 0.2) 0px 0px 29px 0px;
   padding: 0px 20px;
+  margin: 0 auto; /* 중앙 정렬 */
 }
 
-body * {
+/* body * {
   font-family: "NanumPenScript";
-}
+} */
