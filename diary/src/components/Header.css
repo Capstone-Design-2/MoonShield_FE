@@ -1,6 +1,7 @@
 .Header {
   display: flex;
   align-items: center;
+
   padding: 20px 0px;
   border-bottom: 1px solid rgb(226, 226, 226);
 }
@@ -10,8 +11,9 @@
 }
 
 .Header .header_center {
+  color: #ffc96f;
   width: 50%;
-  font-size: 25px;
+  font-size: 30px;
   justify-content: center;
 }
 

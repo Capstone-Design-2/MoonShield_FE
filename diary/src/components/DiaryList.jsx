@@ -1,28 +1,30 @@
-import Button from "./button";
 import "./DiaryList.css";
+import Button from "./Button";
 import DiaryItem from "./DiaryItem";
+
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const DiaryList = ({ data }) => {
   const nav = useNavigate();
+
   const [sortType, setSortType] = useState("latest");
 
   const onChangeSortType = (e) => {
     setSortType(e.target.value);
   };
 
-  const getSortedData = () => {
+  const getSortedDate = () => {
     return data.toSorted((a, b) => {
       if (sortType === "oldest") {
-        return Number(a.createdDate) - Number(b.createdDate);
+        return Number(a.createdDate - b.createdDate);
       } else {
-        return Number(b.createdDate) - Number(a.createdDate);
+        return Number(b.createdDate - a.createdDate);
       }
     });
   };
 
-  const sortedData = getSortedData();
+  const sortedData = getSortedDate();
 
   return (
     <div className="DiaryList">
@@ -33,11 +35,10 @@ const DiaryList = ({ data }) => {
         </select>
         <Button
           onClick={() => nav("/new")}
-          text={"새 일기 쓰기"}
+          text={"작성하기"}
           type={"POSITIVE"}
         />
       </div>
-
       <div className="list_wrapper">
         {sortedData.map((item) => (
           <DiaryItem key={item.id} {...item} />
