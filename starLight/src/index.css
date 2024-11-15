@@ -3,6 +3,9 @@
   font-family: "NanumPenScript";
   src: url("/NanumPenScript-Regular.ttf");
 } */
+/* body * {
+  font-family: "NanumPenScript";
+} */
 
 html,
 body {
@@ -25,7 +28,3 @@ body {
   padding: 0px 20px;
   margin: 0 auto; /* 중앙 정렬 */
 }
-
-/* body * {
-  font-family: "NanumPenScript";
-} */

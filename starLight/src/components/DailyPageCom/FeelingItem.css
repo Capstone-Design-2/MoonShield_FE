@@ -1,0 +1,23 @@
+.FeelingItem {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.FeelingItem_on_1 {
+  background-color: #ffc96f;
+}
+.FeelingItem_on_2 {
+  background-color: #ffc96f;
+}
+.FeelingItem_on_3 {
+  background-color: #ffc96f;
+}
+.FeelingItem_on_4 {
+  background-color: #ffc96f;
+}
+.FeelingItem_on_5 {
+  background-color: #ffc96f;
+}
