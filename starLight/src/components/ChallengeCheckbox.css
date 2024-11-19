@@ -1,0 +1,26 @@
+.challenge-checkbox {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 50px;
+  border-style: solid 10px;
+  border: 1px solid rgb(196, 196, 196);
+  border-radius: 10px;
+}
+
+.challenge-point {
+  margin: 10px;
+  margin-right: 340px;
+  font-weight: bold;
+}
+
+.challenge-checkbtn {
+  background-color: #ffa62f;
+  color: white;
+  padding-inline: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border-style: none;
+  cursor: pointer;
+}

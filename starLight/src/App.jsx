@@ -2,6 +2,7 @@ import "./App.css";
 import ChatPage from "./pages/ChatPage";
 import MainPage from "./pages/MainPage";
 import DailyPage from "./pages/DailyPage"; // Home
+import ChallengePage from "./pages/ChallengePage";
 import Diary from "./pages/Diary";
 import New from "./pages/New";
 import Notfound from "./pages/Notfound";
@@ -116,6 +117,8 @@ function App() {
             <Route path="/daily/new" element={<New />}></Route>
             <Route path="/daily/diary/:id" element={<Diary />}></Route>
             <Route path="/daily/edit/:id" element={<Edit />}></Route>
+
+            <Route path="/challenge" element={<ChallengePage />}></Route>
 
             <Route path="*" element={<Notfound />}></Route>
           </Routes>
