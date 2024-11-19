@@ -1,11 +1,11 @@
 import ChallengeCard from "./ChallengeCard";
 import ChallengeCheckbox from "./ChallengeCheckbox";
 
-const ChallengeContent = () => {
+const ChallengeContent = ({ dailyContent }) => {
   return (
     <div className="challenge-content">
-      <ChallengeCard text="밖에 나가서 신선한 공기 마시기" />
-      <ChallengeCheckbox />
+      <ChallengeCard text={dailyContent} />
+      <ChallengeCheckbox text={dailyContent} />
     </div>
   );
 };

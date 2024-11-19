@@ -1,11 +1,23 @@
 .challenge-card {
   background-color: #f9e3c0;
-  padding: 15px;
+  padding: 30px;
   border-radius: 10px;
   margin: 10px 0;
   font-family: "Pretendard", sans-serif;
   /* margin-bottom: 20px; 아래쪽 간격 */
-  margin-top: 20px; /* 아래쪽 간격 */
+  margin-top: 20px; /* 위쪽 간격 */
+}
+
+.challenge-card_NewChallenge {
+  background-color: #ffc96f;
+  padding: 30px;
+  border-radius: 10px;
+  margin: 10px 0;
+
+  font-weight: bold;
+  font-family: "Pretendard", sans-serif;
+  /* margin-bottom: 20px; 아래쪽 간격 */
+  margin-top: 20px; /* 위쪽 간격 */
 }
 
 .challenge-title {
@@ -17,65 +29,3 @@
 .challenge-text {
   color: #333;
 }
-
-/* .challenge-container {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  text-align: center;
-}
-
-.challenge-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #f3c974;
-  margin-bottom: 20px;
-}
-
-.challenge-card {
-  background-color: #fdf4e3;
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.challenge-card.new {
-  background-color: #ffe6a7;
-}
-
-.challenge-subtitle {
-  font-size: 16px;
-  font-weight: bold;
-  color: #444;
-  margin-bottom: 10px;
-}
-
-.challenge-task {
-  font-size: 18px;
-  margin: 10px 0;
-}
-
-.challenge-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.challenge-points {
-  font-size: 14px;
-  color: #888;
-}
-
-.challenge-complete {
-  background-color: #ffd083;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.challenge-complete.completed {
-  background-color: #f7b755;
-  color: #fff;
-} */

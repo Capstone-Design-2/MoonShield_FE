@@ -9,6 +9,17 @@
   border-radius: 10px;
 }
 
+.challenge-checkbox_NewChallenge {
+  background-color: white;
+  display: flex;
+  justify-content: flex-end;
+
+  margin-bottom: 50px;
+  border-style: solid 10px;
+  border: 1px solid rgb(196, 196, 196);
+  border-radius: 10px;
+}
+
 .challenge-point {
   margin: 10px;
   margin-right: 340px;
