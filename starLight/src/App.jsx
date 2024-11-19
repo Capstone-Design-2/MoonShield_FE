@@ -8,54 +8,75 @@ import New from "./pages/New";
 import Notfound from "./pages/Notfound";
 import Edit from "./pages/Edit";
 
-import { createContext, useReducer, useRef } from "react";
+import { createContext, useEffect, useReducer, useRef, useState } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 
-const mockData = [
-  {
-    id: 1,
-    createdDate: new Date("2024-11-19").getTime(),
-    emotionId: 1,
-    eventContent: "일 때문에",
-    feelingContent: "힘들어",
-  },
-  {
-    id: 2,
-    createdDate: new Date("2024-10-20").getTime(),
-    emotionId: 2,
-    eventContent: "그냥",
-    feelingContent: "우울해",
-  },
-  {
-    id: 3,
-    createdDate: new Date("2024-12-20").getTime(),
-    emotionId: 3,
-    eventContent: "어지러워서",
-    feelingContent: "짜증나",
-  },
-];
-
 function reducer(state, action) {
+  let nextState;
+
   switch (action.type) {
-    case "CREATE":
-      return [action.data, ...state];
-    case "UPDATE":
-      return state.map((item) =>
+    case "INIT":
+      return action.data;
+    case "CREATE": {
+      nextState = [action.data, ...state];
+      break;
+    }
+    case "UPDATE": {
+      nextState = state.map((item) =>
         String(item.id) === String(action.data.id) ? action.data : item
       );
-    case "DELETE":
-      return state.filter((item) => String(item.id) !== String(action.id));
+      break;
+    }
+    case "DELETE": {
+      nextState = state.filter((item) => String(item.id) !== String(action.id));
+      break;
+    }
     default:
       return state;
   }
+
+  localStorage.setItem("diary", JSON.stringify(nextState));
+  return nextState;
 }
 
 export const DiaryStateContext = createContext();
 export const DiaryDispatchContext = createContext();
 
 function App() {
-  const [data, dispatch] = useReducer(reducer, mockData);
-  const idRef = useRef(4);
+  const [isloading, setIsLoading] = useState(true);
+
+  const [data, dispatch] = useReducer(reducer, []);
+  const idRef = useRef(0);
+
+  useEffect(() => {
+    const storedData = localStorage.getItem("diary");
+    if (!storedData) {
+      setIsLoading(false);
+      return;
+    }
+
+    const parsedData = JSON.parse(storedData);
+    if (!Array.isArray(parsedData)) {
+      setIsLoading(false);
+      return;
+    }
+
+    let maxId = 0;
+    parsedData.forEach((item) => {
+      if (Number(item.id) > maxId) {
+        maxId = Number(item.id);
+      }
+    });
+
+    idRef.current = maxId + 1;
+
+    dispatch({
+      type: "INIT",
+      data: parsedData,
+    });
+
+    setIsLoading(false);
+  }, []);
 
   // 새로운 기록 추가
   const onCreate = (createdDate, emotionId, eventContent, feelingContent) => {
@@ -98,6 +119,10 @@ function App() {
       id,
     });
   };
+
+  if (isloading) {
+    return <div>Loading 중...</div>;
+  }
 
   return (
     <>
