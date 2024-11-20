@@ -2,8 +2,9 @@
   display: flex;
   align-items: center;
 
-  padding: 20px 0px;
-  border-bottom: 1px solid rgb(226, 226, 226);
+  padding: 15px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid lightgray;
 }
 
 .Header > div {
@@ -11,9 +12,11 @@
 }
 
 .Header .header_center {
-  color: #ffc96f;
+  color: #ffa600;
   width: 50%;
-  font-size: 30px;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "Pretendard", sans-serif;
   justify-content: center;
 }
 

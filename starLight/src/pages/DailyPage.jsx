@@ -36,8 +36,15 @@ const Home = () => {
   const [pivotdate, setPivottDate] = useState(new Date());
 
   const onIncreasedMonth = () => {
-    setPivottDate(new Date(pivotdate.getFullYear(), pivotdate.getMonth() + 1));
+    if (pivotdate.getMonth() + 1 === new Date().getMonth() + 1) {
+      return;
+    } else {
+      setPivottDate(
+        new Date(pivotdate.getFullYear(), pivotdate.getMonth() + 1)
+      );
+    }
   };
+
   const onDecreasedMonth = () => {
     setPivottDate(new Date(pivotdate.getFullYear(), pivotdate.getMonth() - 1));
   };

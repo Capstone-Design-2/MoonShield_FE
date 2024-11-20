@@ -26,6 +26,15 @@ const DiaryList = ({ data }) => {
 
   const sortedData = getSortedDate();
 
+  const isTodayWritten = () => {
+    const today = new Date().setHours(0, 0, 0, 0);
+    return data.some(
+      (item) => new Date(item.createdDate).setHours(0, 0, 0, 0) === today
+    );
+  };
+
+  const todayWritten = isTodayWritten();
+
   return (
     <div className="DiaryList">
       <div className="menu_bar">
@@ -37,6 +46,7 @@ const DiaryList = ({ data }) => {
           onClick={() => nav("/daily/new")}
           text={"작성하기"}
           type={"POSITIVE"}
+          disabled={todayWritten}
         />
       </div>
       <div className="list_wrapper">
