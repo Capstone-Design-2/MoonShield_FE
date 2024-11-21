@@ -1,0 +1,28 @@
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  display: flex;
+  max-width: 500px;
+  margin: 0 auto;
+  justify-content: space-around;
+  align-items: center !important;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  padding: 10px 0;
+}
+
+.nav-link {
+  text-decoration: none;
+}
+
+.nav-item {
+  width: 32px; /* 아이콘 크기 */
+  height: 32px;
+}

@@ -10,6 +10,7 @@ import Edit from "./pages/Edit";
 
 import { createContext, useEffect, useReducer, useRef, useState } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import BottomNav from "./components/BottomNav";
 
 function reducer(state, action) {
   let nextState;
@@ -147,6 +148,7 @@ function App() {
 
             <Route path="*" element={<Notfound />}></Route>
           </Routes>
+          <BottomNav />
         </DiaryDispatchContext.Provider>
       </DiaryStateContext.Provider>
     </>
