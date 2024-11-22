@@ -3,9 +3,9 @@ import ChallengeCheckbox from "./ChallengeCheckbox";
 
 const ChallengeContent = ({ dailyContent }) => {
   return (
-    <div className="challenge-content">
+    <div className={`challenge-content${contentName}`}>
       <ChallengeCard text={dailyContent} />
-      <ChallengeCheckbox text={dailyContent} />
+      <ChallengeCheckbox />
     </div>
   );
 };

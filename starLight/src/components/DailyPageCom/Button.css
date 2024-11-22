@@ -17,3 +17,7 @@
   background-color: rgb(253, 86, 95);
   color: white;
 }
+
+.Button_disabled {
+  background-color: #888;
+}

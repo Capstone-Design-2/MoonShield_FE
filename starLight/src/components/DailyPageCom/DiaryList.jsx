@@ -5,10 +5,11 @@ import DiaryItem from "./DiaryItem";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const DiaryList = ({ data }) => {
+const DiaryList = ({ data, Disabled }) => {
   const nav = useNavigate();
-
   const [sortType, setSortType] = useState("latest");
+
+  console.log(Disabled);
 
   const onChangeSortType = (e) => {
     setSortType(e.target.value);
@@ -26,14 +27,15 @@ const DiaryList = ({ data }) => {
 
   const sortedData = getSortedDate();
 
-  const isTodayWritten = () => {
+  const isTodayWrittenInData = () => {
     const today = new Date().setHours(0, 0, 0, 0);
+
     return data.some(
       (item) => new Date(item.createdDate).setHours(0, 0, 0, 0) === today
     );
   };
 
-  const todayWritten = isTodayWritten();
+  const buttonDisabled = isTodayWrittenInData();
 
   return (
     <div className="DiaryList">
@@ -46,7 +48,7 @@ const DiaryList = ({ data }) => {
           onClick={() => nav("/daily/new")}
           text={"작성하기"}
           type={"POSITIVE"}
-          disabled={todayWritten}
+          disabled={Disabled ? Disabled : buttonDisabled}
         />
       </div>
       <div className="list_wrapper">

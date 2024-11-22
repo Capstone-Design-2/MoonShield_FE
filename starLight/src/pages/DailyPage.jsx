@@ -51,6 +51,16 @@ const Home = () => {
 
   const monthlyData = getMonthlyData(pivotdate, data);
 
+  const isSameMonthAsToday = () => {
+    const today = new Date();
+    return (
+      pivotdate.getFullYear() === today.getFullYear() &&
+      pivotdate.getMonth() === today.getMonth()
+    );
+  };
+
+  const Disabled = isSameMonthAsToday();
+
   return (
     <div>
       <Header
@@ -58,7 +68,7 @@ const Home = () => {
         leftChild={<Button text={"<"} onClick={onDecreasedMonth} />}
         rightChild={<Button text={">"} onClick={onIncreasedMonth} />}
       />
-      <DiaryList data={monthlyData} />
+      <DiaryList data={monthlyData} Disabled={!Disabled} />
     </div>
   );
 };
