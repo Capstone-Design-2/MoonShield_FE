@@ -11,6 +11,7 @@ import Edit from "./pages/Edit";
 import { createContext, useEffect, useReducer, useRef, useState } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import BottomNav from "./components/BottomNav";
+import ProEdit from "./pages/ProEdit";
 
 function reducer(state, action) {
   let nextState;
@@ -137,6 +138,8 @@ function App() {
         >
           <Routes>
             <Route path="/" element={<MainPage />} />
+            <Route path="/edit" element={<ProEdit />} />
+
             <Route path="/chat" element={<ChatPage />} />
 
             <Route path="/daily" element={<DailyPage />}></Route>
