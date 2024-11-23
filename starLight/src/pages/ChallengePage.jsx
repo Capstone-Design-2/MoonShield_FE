@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { ChallengeContext } from "../App";
 
-import ChallengeContent from "../components/ChallengeContent";
+import ChallengeCard from "../components/ChallengeCard";
+import ChallengeCheckbox from "../components/ChallengeCheckbox";
 
 const ChallengePage = () => {
+  const {
+    challengeMission,
+    challengeId,
+    pointsOfMission,
+    sumOfpoint,
+    addPoint,
+  } = useContext(ChallengeContext);
+
+  const [Points, setPoint] = useState(sumOfpoint);
+
   return (
     <div className="challenge-page">
       <header className="header">
-        <h1 className="header-title">CHALLENGE</h1>
+        <h1 className="header-title">{`CHALLENGE /// ${Points}`}</h1>
       </header>
-      <ChallengeContent dailyContent={"밖에 나가서 신선한 공기 마시기"} />
-      <ChallengeContent dailyContent={"친한 친구에게 안부 전화 하기"} />
-      <ChallengeContent dailyContent={"New Challenge"} />
+      <ChallengeCard id={challengeId.Id1} />
+      <ChallengeCheckbox id={challengeId.Id1} />
+
+      <ChallengeCard id={challengeId.Id2} />
+      <ChallengeCheckbox id={challengeId.Id2} />
+
+      <ChallengeCard id={challengeId.Id3} />
+      <ChallengeCheckbox id={challengeId.Id3} />
     </div>
   );
 };

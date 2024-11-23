@@ -42,6 +42,7 @@ function reducer(state, action) {
 
 export const DiaryStateContext = createContext();
 export const DiaryDispatchContext = createContext();
+export const ChallengeContext = createContext();
 
 function App() {
   const [isloading, setIsLoading] = useState(true);
@@ -125,6 +126,36 @@ function App() {
     return <div>Loading 중...</div>;
   }
 
+  // Challenge 관련 아이템
+  const challengeMission = {
+    Mission1: "밖에 나가서 신선한 공기 마시기",
+    Mission2: "친한 친구에게 안부 전화 하기",
+    Mission3: "New Challenge",
+  };
+
+  const pointsOfMission = {
+    p1: 10,
+    p2: 15,
+    p3: 20,
+  };
+
+  const challengeId = {
+    Id1: 1,
+    Id2: 2,
+    Id3: 3,
+  };
+
+  let sumOfpoint = 0;
+
+  const pointUpdate = (sumOfpoint) => {
+    dispatch(sumOfpoint);
+  };
+
+  const addPoint = (point) => {
+    sumOfpoint += point;
+    console.log(`{2 : ${sumOfpoint}}`);
+  };
+
   return (
     <>
       <DiaryStateContext.Provider value={data}>
@@ -135,20 +166,30 @@ function App() {
             onDelete,
           }}
         >
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/chat" element={<ChatPage />} />
+          <ChallengeContext.Provider
+            value={{
+              challengeMission,
+              challengeId,
+              pointsOfMission,
+              sumOfpoint,
+              addPoint,
+            }}
+          >
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/chat" element={<ChatPage />} />
 
-            <Route path="/daily" element={<DailyPage />}></Route>
-            <Route path="/daily/new" element={<New />}></Route>
-            <Route path="/daily/diary/:id" element={<Diary />}></Route>
-            <Route path="/daily/edit/:id" element={<Edit />}></Route>
+              <Route path="/daily" element={<DailyPage />}></Route>
+              <Route path="/daily/new" element={<New />}></Route>
+              <Route path="/daily/diary/:id" element={<Diary />}></Route>
+              <Route path="/daily/edit/:id" element={<Edit />}></Route>
 
-            <Route path="/challenge" element={<ChallengePage />}></Route>
+              <Route path="/challenge" element={<ChallengePage />}></Route>
 
-            <Route path="*" element={<Notfound />}></Route>
-          </Routes>
-          <BottomNav />
+              <Route path="*" element={<Notfound />}></Route>
+            </Routes>
+            <BottomNav />
+          </ChallengeContext.Provider>
         </DiaryDispatchContext.Provider>
       </DiaryStateContext.Provider>
     </>

@@ -7,8 +7,8 @@ import Button from "./Button";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { emotionList } from "../../util/constants";
-import { eventList } from "../../util/event_constans";
-import { feelingList } from "../../util/feeling_constans";
+import { eventList } from "../../util/event_constants";
+import { feelingList } from "../../util/feeling_constants";
 import { getStringedDate } from "../../util/get-stringed-date";
 
 const Editor = ({ initData, onSubmit }) => {
