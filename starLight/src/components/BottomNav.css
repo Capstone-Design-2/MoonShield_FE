@@ -1,23 +1,27 @@
-.flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.wrapper {
-  display: flex;
-  max-width: 500px;
-  margin: 0 auto;
-  justify-content: space-around;
-  align-items: center !important;
+/* 상위 wrapper 스타일 */
+.bottom-nav-wrapper {
   position: fixed;
   bottom: 0;
+  left: 0;
   width: 100%;
-  background-color: #f8f9fa;
-  border-top: 1px solid #dee2e6;
-  padding: 10px 0;
+  background-color: #fff; /* 흰색 배경 */
+  box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.1); /* 상단 그림자 효과 */
+  display: flex;
+  justify-content: center; /* 내용 중앙 정렬 */
+  padding: 10px 0; /* 상하 여백 */
+  z-index: 100; /* 다른 요소 위에 렌더링 */
 }
 
+/* 실제 네비게이션 내부 */
+.bottom-nav {
+  display: flex;
+  justify-content: space-around; /* 네비게이션 아이템 간격 조절 */
+  align-items: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+/* 아이템 스타일 */
 .nav-link {
   text-decoration: none;
 }

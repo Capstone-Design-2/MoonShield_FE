@@ -1,6 +1,6 @@
 import ProfileEdit from "../components/MainPageCom/ProfileEdit";
 
-const ProEdit = () => {
+const MainEdit = () => {
   return (
     <div>
       <ProfileEdit />
@@ -8,4 +8,4 @@ const ProEdit = () => {
   );
 };
 
-export default ProEdit;
+export default MainEdit;

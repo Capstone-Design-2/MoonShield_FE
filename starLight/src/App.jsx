@@ -7,6 +7,7 @@ import Diary from "./pages/Diary";
 import New from "./pages/New";
 import Notfound from "./pages/Notfound";
 import Edit from "./pages/Edit";
+import MainEdit from "./pages/ProEdit";
 
 import { createContext, useEffect, useReducer, useRef, useState } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
@@ -178,6 +179,7 @@ function App() {
             <Routes>
               <Route path="/" element={<MainPage />} />
               <Route path="/chat" element={<ChatPage />} />
+              <Route path="/edit" element={<MainEdit />}></Route>
 
               <Route path="/daily" element={<DailyPage />}></Route>
               <Route path="/daily/new" element={<New />}></Route>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom"; // useLocation 추가
+import { Link, useLocation } from "react-router-dom";
 import home from "../assets/home.png";
 import homeActive from "../assets/home-active.png";
 import chat from "../assets/chat.png";
@@ -11,7 +11,7 @@ import challengeActive from "../assets/challenge-active.png";
 import "./BottomNav.css";
 
 const BottomNav = () => {
-  const location = useLocation(); // 현재 경로 감지
+  const location = useLocation();
 
   const navItems = [
     { path: "/", activeImg: homeActive, img: home, alt: "Home" },
@@ -26,23 +26,24 @@ const BottomNav = () => {
   ];
 
   return (
-    <nav className="wrapper">
-      {navItems.map((navItem, index) => (
-        <div key={index}>
-          <Link to={navItem.path} className="nav-link">
+    <div className="bottom-nav-wrapper">
+      {/* 흰색 박스 안에 포함 */}
+      <div className="bottom-nav">
+        {navItems.map((navItem, index) => (
+          <Link to={navItem.path} key={index} className="nav-link">
             <img
               src={
                 location.pathname === navItem.path
                   ? navItem.activeImg
                   : navItem.img
-              } // 현재 경로와 비교
+              }
               alt={navItem.alt}
               className="nav-item"
             />
           </Link>
-        </div>
-      ))}
-    </nav>
+        ))}
+      </div>
+    </div>
   );
 };
 
