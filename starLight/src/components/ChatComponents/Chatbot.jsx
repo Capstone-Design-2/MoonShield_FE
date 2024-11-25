@@ -52,10 +52,15 @@ const Chatbot = () => {
     }
   };
 
+  //한글 버그 해결
   const handleKeyDown = (event) => {
+    // IME 입력 중(한글 조합 중)일 때 Enter를 무시
+    if (event.isComposing || event.keyCode === 229) return;
+
+    // Enter 키 처리 (Shift + Enter는 줄바꿈)
     if (event.key === "Enter" && !event.shiftKey && userInput.trim() !== "") {
-      event.preventDefault();
-      handleSendMessage();
+      event.preventDefault(); // 기본 Enter 동작(줄바꿈) 방지
+      handleSendMessage(); // 메시지 전송
     }
   };
 
