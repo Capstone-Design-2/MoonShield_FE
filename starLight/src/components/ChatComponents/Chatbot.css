@@ -10,7 +10,7 @@
   box-shadow: rgba(100, 100, 100, 0.2) 0px 0px 29px 0px;
   background-color: white;
   border-radius: 10px;
-  min-height: 600px; /* 최소 높이를 600px로 설정하여 더 크게 만듦 */
+  min-height: 500px; /* 최소 높이를 600px로 설정하여 더 크게 만듦 */
 }
 
 /* 챗봇 제목 스타일 */
@@ -24,7 +24,7 @@
 /* 고정된 크기의 채팅 창 스타일 */
 .chatDiv {
   width: 100%;
-  height: 500px; /* 채팅창 높이를 500px로 늘림 */
+  height: 400px; /* 채팅창 높이를 500px로 늘림 */
   overflow-y: auto; /* 수직 스크롤 활성화 */
   padding: 10px;
   background-color: #f9f9f9;
