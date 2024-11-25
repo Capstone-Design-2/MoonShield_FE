@@ -1,6 +1,5 @@
 /* 공통 스타일 */
-
-.login-container {
+.login-login-container {
   width: 460px;
   padding: 20px;
   background-color: white;
@@ -8,7 +7,7 @@
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.profile-container {
+.login-profile-container {
   background-color: #ffc96f;
   padding: 20px;
   width: 420px;
@@ -18,7 +17,7 @@
   margin-bottom: 20px;
 }
 
-.avatar {
+.login-avatar {
   width: 60px;
   height: 60px;
   flex-shrink: 0;
@@ -26,43 +25,43 @@
   border-radius: 50%;
 }
 
-.profile-info {
+.login-profile-info {
   margin-left: 20px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
-.profile-info h2 {
+.login-profile-info h2 {
   margin: 0;
   font-size: 20px;
   color: #333;
 }
 
-.profile-info p {
+.login-profile-info p {
   margin: 5px 0 0;
   font-size: 14px;
   color: #555;
 }
 
 /* 폼 스타일 */
-.login-form {
+.login-login-form {
   display: flex;
   flex-direction: column;
 }
 
-.form-group {
+.login-form-group {
   margin-bottom: 15px;
 }
 
-.form-group label {
+.login-form-group label {
   display: block;
   margin-bottom: 5px;
   font-size: 14px;
   color: #333;
 }
 
-.form-group input {
+.login-form-group input {
   width: 100%;
   max-width: 420px;
   padding: 10px;
@@ -71,7 +70,7 @@
   font-size: 14px;
 }
 
-.login-button {
+.login-login-button {
   background-color: #ffc96f;
   color: white;
   border: none;
@@ -82,6 +81,6 @@
   transition: background-color 0.3s;
 }
 
-.login-button:hover {
+.login-login-button:hover {
   background-color: #f3b556;
 }
