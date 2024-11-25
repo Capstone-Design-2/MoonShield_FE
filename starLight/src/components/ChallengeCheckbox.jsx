@@ -14,28 +14,28 @@ const ChallengeCheckbox = ({ id }) => {
     pointsOfMission,
     sumOfpoint,
     addPoint,
+    completedChallenges,
   } = useContext(ChallengeContext);
-
-  useEffect(() => {
-    console.log(`{1 : ${sumOfpoint}}`);
-  }, [sumOfpoint]);
 
   var contentName;
 
-  console.log(`1 : ${sumOfpoint}`);
+  const handleAddPoint = (id, point) => {
+    addPoint(id, point);
+  };
 
   if (id === 1) {
     contentName = setClassName(challengeMission.Mission1);
-
     if (contentName === "") {
       return (
         <div className={`challenge-checkbox${contentName}`}>
           <div className="challenge-point">{`+ ${pointsOfMission.p1}pt`}</div>
           <button
-            className="challenge-checkbtn"
-            onClick={addPoint(pointsOfMission.p1)}
+            className={`challenge-checkbtn ${
+              completedChallenges[id - 1] ? "challenge-checkbtn_disabled" : ""
+            }`}
+            onClick={() => handleAddPoint(id, pointsOfMission.p1)}
+            disabled={completedChallenges[id - 1]}
           >
-            {" "}
             완료
           </button>
         </div>
@@ -57,10 +57,12 @@ const ChallengeCheckbox = ({ id }) => {
         <div className={`challenge-checkbox${contentName}`}>
           <div className="challenge-point">{`+ ${pointsOfMission.p2}pt`}</div>
           <button
-            className="challenge-checkbtn"
-            onClick={addPoint(pointsOfMission.p2)}
+            className={`challenge-checkbtn ${
+              completedChallenges[id - 1] ? "challenge-checkbtn_disabled" : ""
+            }`}
+            onClick={() => handleAddPoint(id, pointsOfMission.p2)}
+            disabled={completedChallenges[id - 1]}
           >
-            {" "}
             완료
           </button>
         </div>
@@ -82,10 +84,12 @@ const ChallengeCheckbox = ({ id }) => {
         <div className={`challenge-checkbox${contentName}`}>
           <div className="challenge-point">{`+ ${pointsOfMission.p3}pt`}</div>
           <button
-            className="challenge-checkbtn"
-            onClick={addPoint(pointsOfMission.p3)}
+            className={`challenge-checkbtn ${
+              completedChallenges[id - 1] ? "challenge-checkbtn_disabled" : ""
+            }`}
+            onClick={() => handleAddPoint(id, pointsOfMission.p3)}
+            disabled={completedChallenges[id - 1]}
           >
-            {" "}
             완료
           </button>
         </div>
@@ -94,7 +98,7 @@ const ChallengeCheckbox = ({ id }) => {
       return (
         <div className={`challenge-checkbox${contentName}`}>
           <div className="challenge-point">{`+ ${pointsOfMission.p3}pt`}</div>
-          <button className="challenge-checkbtn"> 미오픈</button>
+          <button className="challenge-checkbtn">미오픈</button>
         </div>
       );
     }

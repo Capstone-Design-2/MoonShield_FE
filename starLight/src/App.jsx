@@ -48,6 +48,16 @@ export const ChallengeContext = createContext();
 function App() {
   const [isloading, setIsLoading] = useState(true);
 
+  // 챌린지 포인트 합계를 위한 sumOfpoint
+  const [sumOfpoint, setSumOfpoint] = useState(0);
+
+  // 챌린지 완료 여부를 관리하기 위한 completedChallenges
+  const [completedChallenges, setCompletedChallenges] = useState([
+    false,
+    false,
+    false,
+  ]);
+
   const [data, dispatch] = useReducer(reducer, []);
   const idRef = useRef(0);
 
@@ -146,15 +156,15 @@ function App() {
     Id3: 3,
   };
 
-  let sumOfpoint = 0;
-
-  const pointUpdate = (sumOfpoint) => {
-    dispatch(sumOfpoint);
-  };
-
-  const addPoint = (point) => {
-    sumOfpoint += point;
-    console.log(`{2 : ${sumOfpoint}}`);
+  const addPoint = (index, point) => {
+    if (!completedChallenges[index]) {
+      setSumOfpoint((prev) => prev + point);
+      setCompletedChallenges((prev) => {
+        const updated = [...prev];
+        updated[index - 1] = true; // 해당 챌린지 완료 처리
+        return updated;
+      });
+    }
   };
 
   return (
@@ -174,6 +184,7 @@ function App() {
               pointsOfMission,
               sumOfpoint,
               addPoint,
+              completedChallenges,
             }}
           >
             <Routes>

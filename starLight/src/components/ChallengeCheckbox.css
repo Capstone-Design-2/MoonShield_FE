@@ -35,3 +35,13 @@
   border-style: none;
   cursor: pointer;
 }
+
+.challenge-checkbtn_disabled {
+  background-color: rgb(196, 196, 196);
+  color: white;
+  padding-inline: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border-style: none;
+  cursor: pointer;
+}

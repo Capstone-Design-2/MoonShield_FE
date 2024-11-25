@@ -11,14 +11,13 @@ const ChallengePage = () => {
     pointsOfMission,
     sumOfpoint,
     addPoint,
+    completedChallenges,
   } = useContext(ChallengeContext);
-
-  const [Points, setPoint] = useState(sumOfpoint);
 
   return (
     <div className="challenge-page">
       <header className="header">
-        <h1 className="header-title">{`CHALLENGE /// ${Points}`}</h1>
+        <h1 className="header-title">{`CHALLENGE /// ${sumOfpoint}`}</h1>
       </header>
       <ChallengeCard id={challengeId.Id1} />
       <ChallengeCheckbox id={challengeId.Id1} />
