@@ -12,6 +12,7 @@ import MainEdit from "./pages/ProEdit";
 import { createContext, useEffect, useReducer, useRef, useState } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import BottomNav from "./components/BottomNav";
+import LoginPage from "./pages/LoginPage";
 
 function reducer(state, action) {
   let nextState;
@@ -191,6 +192,7 @@ function App() {
               <Route path="/" element={<MainPage />} />
               <Route path="/chat" element={<ChatPage />} />
               <Route path="/edit" element={<MainEdit />}></Route>
+              <Route path="/login" element={<LoginPage />}></Route>
 
               <Route path="/daily" element={<DailyPage />}></Route>
               <Route path="/daily/new" element={<New />}></Route>
