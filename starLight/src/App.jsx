@@ -8,6 +8,9 @@ import New from "./pages/New";
 import Notfound from "./pages/Notfound";
 import Edit from "./pages/Edit";
 import MainEdit from "./pages/ProEdit";
+import HashPage from "./pages/HashPage";
+import HashViewPage from "./pages/HashViewPage";
+import HashWritePage from "./pages/HashWritepage";
 
 import { createContext, useEffect, useReducer, useRef, useState } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
@@ -193,6 +196,10 @@ function App() {
               <Route path="/chat" element={<ChatPage />} />
               <Route path="/edit" element={<MainEdit />}></Route>
               <Route path="/login" element={<LoginPage />}></Route>
+
+              <Route path="/hash" element={<HashPage />}></Route>
+              <Route path="/hash/write" element={<HashWritePage />}></Route>
+              <Route path="/hash/view" element={<HashViewPage />}></Route>
 
               <Route path="/daily" element={<DailyPage />}></Route>
               <Route path="/daily/new" element={<New />}></Route>
