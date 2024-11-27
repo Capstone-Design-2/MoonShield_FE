@@ -28,6 +28,15 @@ textarea {
   padding: 10px 20px;
 }
 
+.Editor textarea {
+  padding: 20px;
+  width: 100%;
+  min-height: 50px;
+  resize: vertical;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
 .Editor > section > textarea {
   padding: 20px;
   width: 100%;
@@ -46,7 +55,6 @@ textarea {
   display: flex;
   justify-content: space-around;
   gap: 2%;
-  margin: 10px;
 }
 
 .Editor .feeling_content_section .feeling_list_wrapper {
