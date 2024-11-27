@@ -16,7 +16,7 @@ const Diary = () => {
     return <div>로딩 중...</div>;
   }
 
-  const { createdDate, emotionId, eventContent, feelingContent } = curDiaryItem;
+  const { createdDate, emotionId, Content, HashTag } = curDiaryItem;
   const title = getStringedDate(new Date(createdDate));
 
   return (
@@ -38,11 +38,7 @@ const Diary = () => {
           />
         }
       />
-      <Viewer
-        emotionId={emotionId}
-        eventContent={eventContent}
-        feelingContent={feelingContent}
-      />
+      <Viewer emotionId={emotionId} Content={Content} HashTag={HashTag} />
     </div>
   );
 };

@@ -96,35 +96,29 @@ function App() {
   }, []);
 
   // 새로운 기록 추가
-  const onCreate = (createdDate, emotionId, eventContent, feelingContent) => {
+  const onCreate = (createdDate, emotionId, Content, HashTag) => {
     dispatch({
       type: "CREATE",
       data: {
         id: idRef.current++,
         createdDate,
         emotionId,
-        eventContent,
-        feelingContent,
+        Content,
+        HashTag,
       },
     });
   };
 
   // 기존 기록 수정
-  const onUpdate = (
-    id,
-    createdDate,
-    emotionId,
-    eventContent,
-    feelingContent
-  ) => {
+  const onUpdate = (id, createdDate, emotionId, Content, HashTag) => {
     dispatch({
       type: "UPDATE",
       data: {
         id,
         createdDate,
         emotionId,
-        eventContent,
-        feelingContent,
+        Content,
+        HashTag,
       },
     });
   };

@@ -4,13 +4,7 @@ import Button from "./Button";
 
 import { useNavigate } from "react-router-dom";
 
-const DiaryItem = ({
-  id,
-  emotionId,
-  createdDate,
-  eventContent,
-  feelingContent,
-}) => {
+const DiaryItem = ({ id, emotionId, createdDate, Content, HashTag }) => {
   const nav = useNavigate();
 
   return (
@@ -23,7 +17,8 @@ const DiaryItem = ({
       </div>
       <div onClick={() => nav(`/daily/diary/${id}`)} className="text_section">
         <div className="date">{new Date(createdDate).toLocaleDateString()}</div>
-        <div className="content">{`${eventContent} ${feelingContent}`}</div>
+        {/* <div className="content">{Content}</div> */}
+        <div className="hashTag">{HashTag}</div>
       </div>
       <div className="button_section">
         <Button onClick={() => nav(`/daily/edit/${id}`)} text={"수정"} />
