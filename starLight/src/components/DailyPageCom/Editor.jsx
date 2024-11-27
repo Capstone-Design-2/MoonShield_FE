@@ -103,7 +103,7 @@ const Editor = ({ initData, onSubmit }) => {
       </section>
 
       <section className="event_content_section">
-        <h4>있었던 일</h4>
+        {/* <h4>있었던 일</h4> */}
 
         <div className="event_list_wrapper">
           {eventList.map((item) => (
@@ -116,16 +116,16 @@ const Editor = ({ initData, onSubmit }) => {
           ))}
         </div>
 
-        <textarea
+        {/* <textarea
           name="eventContent"
           value={input.eventContent}
           onChange={onChangeInput}
           placeholder="~한 일이 있어서..."
-        ></textarea>
+        ></textarea> */}
       </section>
 
       <section className="feeling_content_section">
-        <h4>오늘 느낀 감정</h4>
+        {/* <h4>오늘 느낀 감정</h4> */}
 
         <div className="feeling_list_wrapper">
           {feelingList.map((item) => (
@@ -138,13 +138,18 @@ const Editor = ({ initData, onSubmit }) => {
           ))}
         </div>
 
-        <textarea
+        {/* <textarea
           name="feelingContent"
           value={input.feelingContent}
           onChange={onChangeInput}
           placeholder="~했어..."
-        ></textarea>
+        ></textarea> */}
       </section>
+
+      <textarea
+        name="diary_content"
+        placeholder="오늘의 일기를 적어보세요."
+      ></textarea>
 
       <section className="button_section">
         <Button onClick={() => nav(-1)} text={"취소"} />
