@@ -116,12 +116,12 @@ const Editor = ({ initData, onSubmit }) => {
           ))}
         </div>
 
-        <textarea
+        {/* <textarea
           name="eventContent"
           value={input.eventContent}
           onChange={onChangeInput}
           placeholder="~한 일이 있어서..."
-        ></textarea>
+        ></textarea> */}
       </section>
 
       <section className="feeling_content_section">

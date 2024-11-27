@@ -1,22 +1,22 @@
 export const feelingList = [
   {
     feelingId: 1,
-    feelingName: "우울해",
+    feelingName: "즐거움",
   },
   {
     feelingId: 2,
-    feelingName: "짜증나",
+    feelingName: "기쁨",
   },
   {
     feelingId: 3,
-    feelingName: "덤덤해",
+    feelingName: "우울",
   },
   {
     feelingId: 4,
-    feelingName: "신나",
+    feelingName: "힘듦",
   },
   {
     feelingId: 5,
-    feelingName: "즐거워",
+    feelingName: "덤덤",
   },
 ];

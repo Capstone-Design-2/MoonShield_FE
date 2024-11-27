@@ -1,22 +1,22 @@
 export const eventList = [
   {
     eventId: 1,
-    eventName: "일 때문에",
+    eventName: "일",
   },
   {
     eventId: 2,
-    eventName: "컨디션이 안 좋아서",
+    eventName: "컨디션",
   },
   {
     eventId: 3,
-    eventName: "그냥",
+    eventName: "친구",
   },
   {
     eventId: 4,
-    eventName: "왠지 들떠서",
+    eventName: "가족",
   },
   {
     eventId: 5,
-    eventName: "좋은 일이 있어서",
+    eventName: "학교",
   },
 ];
