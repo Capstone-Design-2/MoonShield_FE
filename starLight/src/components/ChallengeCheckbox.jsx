@@ -1,13 +1,22 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./ChallengeCheckbox.css";
 
+import axios from "axios";
+
 import { ChallengeContext } from "../App";
 
-const setClassName = (text) => {
-  return text === "New Challenge" ? "_NewChallenge" : "";
-};
+const ChallengeCheckbox = ({
+  id,
+  challengeName,
+  points,
+  isCompleted,
+  onComplete,
+}) => {
+  const [challenge, setChallenge] = useState([]);
+  const [sumOfPoint, setSumOfPoint] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-const ChallengeCheckbox = ({ id }) => {
   const {
     challengeMission,
     challengeId,
@@ -15,94 +24,51 @@ const ChallengeCheckbox = ({ id }) => {
     sumOfpoint,
     addPoint,
     completedChallenges,
+    challengeData,
   } = useContext(ChallengeContext);
 
-  var contentName;
+  if (loading) return <div>로딩중..</div>; // 로딩 상태가 활성화 됐을때 렌더링 될 문구
+  if (error) return <div>에러가 발생했습니다</div>; // 에러 발생시 렌더링 될 문구
+  if (!challenge) return null; // users 값이 없을 때에는 null 을 보여주도록 처리
 
-  const handleAddPoint = (id, point) => {
-    addPoint(id, point);
+  const handleAddPoint = async (id, points) => {
+    try {
+      setError(null);
+      setChallenge(null);
+      setLoading(true);
+      await axios.post(
+        `http://www.0429.site/api/v1/challenges/${id}`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer Access Token`,
+          },
+        }
+      );
+
+      onComplete(id);
+    } catch (e) {
+      setError(e);
+      console.log(e);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  if (id === 1) {
-    contentName = setClassName(challengeMission.Mission1);
-    if (contentName === "") {
-      return (
-        <div className={`challenge-checkbox${contentName}`}>
-          <div className="challenge-point">{`+ ${pointsOfMission.p1}pt`}</div>
-          <button
-            className={`challenge-checkbtn ${
-              completedChallenges[id - 1] ? "challenge-checkbtn_disabled" : ""
-            }`}
-            onClick={() => handleAddPoint(id, pointsOfMission.p1)}
-            disabled={completedChallenges[id - 1]}
-          >
-            완료
-          </button>
-        </div>
-      );
-    } else {
-      return (
-        <div className={`challenge-checkbox${contentName}`}>
-          <div className="challenge-point">{`+ ${pointsOfMission.p1}pt`}</div>
-          <button className="challenge-checkbtn"> 미오픈</button>
-        </div>
-      );
-    }
-  }
-
-  if (id === 2) {
-    contentName = setClassName(challengeMission.Mission2);
-    if (contentName === "") {
-      return (
-        <div className={`challenge-checkbox${contentName}`}>
-          <div className="challenge-point">{`+ ${pointsOfMission.p2}pt`}</div>
-          <button
-            className={`challenge-checkbtn ${
-              completedChallenges[id - 1] ? "challenge-checkbtn_disabled" : ""
-            }`}
-            onClick={() => handleAddPoint(id, pointsOfMission.p2)}
-            disabled={completedChallenges[id - 1]}
-          >
-            완료
-          </button>
-        </div>
-      );
-    } else {
-      return (
-        <div className={`challenge-checkbox${contentName}`}>
-          <div className="challenge-point">{`+ ${pointsOfMission.p2}pt`}</div>
-          <button className="challenge-checkbtn"> 미오픈</button>
-        </div>
-      );
-    }
-  }
-
-  if (id === 3) {
-    contentName = setClassName(challengeMission.Mission3);
-    if (contentName === "") {
-      return (
-        <div className={`challenge-checkbox${contentName}`}>
-          <div className="challenge-point">{`+ ${pointsOfMission.p3}pt`}</div>
-          <button
-            className={`challenge-checkbtn ${
-              completedChallenges[id - 1] ? "challenge-checkbtn_disabled" : ""
-            }`}
-            onClick={() => handleAddPoint(id, pointsOfMission.p3)}
-            disabled={completedChallenges[id - 1]}
-          >
-            완료
-          </button>
-        </div>
-      );
-    } else {
-      return (
-        <div className={`challenge-checkbox${contentName}`}>
-          <div className="challenge-point">{`+ ${pointsOfMission.p3}pt`}</div>
-          <button className="challenge-checkbtn">미오픈</button>
-        </div>
-      );
-    }
-  }
+  return (
+    <div className="challenge-checkbox">
+      <div className="challenge-point">{`+ ${points}pt`}</div>
+      <button
+        className={`challenge-checkbtn ${
+          isCompleted ? "challenge-checkbtn_disabled" : ""
+        }`}
+        onClick={() => handleAddPoint(id, points)}
+        disabled={isCompleted || loading}
+      >
+        완료
+      </button>
+    </div>
+  );
 };
-
 export default ChallengeCheckbox;

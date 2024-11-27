@@ -56,11 +56,7 @@ function App() {
   const [sumOfpoint, setSumOfpoint] = useState(0);
 
   // 챌린지 완료 여부를 관리하기 위한 completedChallenges
-  const [completedChallenges, setCompletedChallenges] = useState([
-    false,
-    false,
-    false,
-  ]);
+  const [completedChallenges, setisCompleted] = useState([false, false, false]);
 
   const [data, dispatch] = useReducer(reducer, []);
   const idRef = useRef(0);
@@ -136,30 +132,82 @@ function App() {
   }
 
   // Challenge 관련 아이템
+  const challengeData = {
+    challenge1: {
+      id: 1,
+      challengeName: "밖에 나가서 신선한 공기 마시기",
+      points: 10,
+      isCompleted: false,
+    },
+
+    challenge2: {
+      id: 2,
+      challengeName: "친한 친구에게 안부 전화 하기",
+      points: 20,
+      isCompleted: false,
+    },
+
+    challenge3: {
+      id: 3,
+      challengeName: "챌린지 3",
+      points: 30,
+      isCompleted: false,
+    },
+  };
+
   const challengeMission = {
     Mission1: "밖에 나가서 신선한 공기 마시기",
     Mission2: "친한 친구에게 안부 전화 하기",
     Mission3: "New Challenge",
   };
-
   const pointsOfMission = {
     p1: 10,
     p2: 15,
     p3: 20,
   };
-
   const challengeId = {
     Id1: 1,
     Id2: 2,
     Id3: 3,
   };
 
-  const addPoint = (index, point) => {
-    if (!completedChallenges[index]) {
+  const addPoint = (id, point) => {
+    if (id === challengeData.challenge1.id) {
       setSumOfpoint((prev) => prev + point);
-      setCompletedChallenges((prev) => {
+
+      console.log(challengeData.challenge1.isCompleted);
+      challengeData.challenge1.isCompleted = true;
+
+      console.log(challengeData.challenge1.isCompleted);
+
+      setisCompleted((prev) => {
         const updated = [...prev];
-        updated[index - 1] = true; // 해당 챌린지 완료 처리
+        updated[id - 1] = true; // 해당 챌린지 완료 처리
+        return updated;
+      });
+    } else if (id === challengeData.challenge2.id) {
+      setSumOfpoint((prev) => prev + point);
+
+      console.log(challengeData.challenge2.isCompleted);
+      challengeData.challenge2.isCompleted = true;
+
+      console.log(challengeData.challenge2.isCompleted);
+
+      setisCompleted((prev) => {
+        const updated = [...prev];
+        updated[id - 1] = true; // 해당 챌린지 완료 처리
+        return updated;
+      });
+    } else if (id === challengeData.challenge3.id) {
+      setSumOfpoint((prev) => prev + point);
+      console.log(challengeData.challenge3.isCompleted);
+      challengeData.challenge3.isCompleted = true;
+
+      console.log(challengeData.challenge3.isCompleted);
+
+      setisCompleted((prev) => {
+        const updated = [...prev];
+        updated[id - 1] = true; // 해당 챌린지 완료 처리
         return updated;
       });
     }
@@ -183,6 +231,7 @@ function App() {
               sumOfpoint,
               addPoint,
               completedChallenges,
+              challengeData,
             }}
           >
             <Routes>
