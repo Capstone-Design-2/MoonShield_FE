@@ -14,8 +14,8 @@ const New = () => {
     onCreate(
       input.createdDate.getTime(),
       input.emotionId,
-      input.eventContent,
-      input.feelingContent
+      input.Content,
+      input.HashTag
     );
     nav("/daily", { replace: true });
   };

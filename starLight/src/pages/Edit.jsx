@@ -29,8 +29,8 @@ const Edit = () => {
         params.id,
         input.createdDate.getTime(),
         input.emotionId,
-        input.eventContent,
-        input.feelingContent
+        input.Content,
+        input.HashTag
       );
       nav("/daily", { replace: true });
     }

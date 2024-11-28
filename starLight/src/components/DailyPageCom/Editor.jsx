@@ -15,8 +15,8 @@ const Editor = ({ initData, onSubmit }) => {
   const [input, setInput] = useState({
     createdDate: new Date(),
     emotionId: 3,
-    eventContent: "",
-    feelingContent: "",
+    Content: "",
+    HashTag: [],
   });
 
   const nav = useNavigate();
@@ -52,20 +52,52 @@ const Editor = ({ initData, onSubmit }) => {
   };
 
   const onSelectEvent = (item) => {
-    setInput({
-      ...input,
-      eventId: item.eventId,
-      eventContent: item.eventName, // 선택한 이벤트의 기본 텍스트가 자동으로 채워짐
-    });
+    // setInput((prev) => ({
+    //   ...input,
+    //   ...prev,
+    //   eventId: item.eventId,
+    //   eventName: input.eventName,
+    //   HashTag: Array.isArray(prev.HashTag)
+    //     ? prev.HashTag.map((tag, index) => (index === 0 ? item.eventName : tag))
+    //     : ["", item.eventName],
+    // }));
+    addHashTag(item.eventName);
   };
 
   const onSelectFeeling = (item) => {
-    setInput({
-      ...input,
-      feelingId: item.feelingId,
-      feelingContent: item.feelingName, // 선택한 이벤트의 기본 텍스트가 자동으로 채워짐
+    // setInput((prev) => ({
+    //   ...input,
+    //   feelingId: item.feelingId,
+    //   feelingName: input.feelingName,
+    //   HashTag: Array.isArray(prev.HashTag)
+    //     ? prev.HashTag.map((tag, index) =>
+    //         index === 0 ? item.feelingName : tag
+    //       )
+    //     : ["", item.feelingName],
+    // }));
+    addHashTag(item.feelingName);
+  };
+
+  const addHashTag = (tag) => {
+    setInput((prev) => {
+      // 해시 태그가 이미 배열에 있다면 추가하지 않음
+      if (prev.HashTag.includes(tag)) return prev;
+
+      return {
+        ...prev,
+        HashTag: [...prev.HashTag, tag],
+      };
     });
   };
+
+  const removeHashTag = (tag) => {
+    setInput((prev) => ({
+      ...prev,
+      HashTag: prev.HashTag.filter((t) => t !== tag), // 선택된 태그 제거
+    }));
+  };
+
+  console.log(input.HashTag);
 
   return (
     <div className="Editor">
@@ -102,6 +134,8 @@ const Editor = ({ initData, onSubmit }) => {
         </div>
       </section>
 
+      {/* HashTag 1 */}
+
       <section className="event_content_section">
         {/* <h4>있었던 일</h4> */}
 
@@ -124,6 +158,8 @@ const Editor = ({ initData, onSubmit }) => {
         ></textarea> */}
       </section>
 
+      {/* HashTag 2 */}
+
       <section className="feeling_content_section">
         {/* <h4>오늘 느낀 감정</h4> */}
 
@@ -138,6 +174,29 @@ const Editor = ({ initData, onSubmit }) => {
           ))}
         </div>
 
+        <section>
+          <h4>선택된 해시 태그</h4>
+          <div className="selected_hashtags">
+            {input.HashTag.map((tag, index) => (
+              <span key={index} className="hashtag">
+                {tag}{" "}
+                <button
+                  onClick={() => removeHashTag(tag)} // 태그 제거 버튼
+                  style={{
+                    border: "none",
+                    borderRadius: 15,
+                    background: "red",
+                    color: "black",
+                    cursor: "pointer",
+                  }}
+                >
+                  ✖{" "}
+                </button>
+              </span>
+            ))}
+          </div>
+        </section>
+
         {/* <textarea
           name="feelingContent"
           value={input.feelingContent}
@@ -147,8 +206,10 @@ const Editor = ({ initData, onSubmit }) => {
       </section>
 
       <textarea
-        name="diary_content"
+        name="Content"
         placeholder="오늘의 일기를 적어보세요."
+        value={input.Content}
+        onChange={onChangeInput}
       ></textarea>
 
       <section className="button_section">

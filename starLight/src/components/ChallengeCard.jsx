@@ -1,5 +1,7 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./ChallengeCard.css";
+
+import axios from "axios";
 
 import { ChallengeContext } from "../App";
 
@@ -7,69 +9,82 @@ const setClassName = (text) => {
   return text === "New Challenge" ? "_NewChallenge" : "";
 };
 
-const ChallengeCard = ({ id }) => {
-  const {
-    challengeMission,
-    challengeId,
-    pointsOfMission,
-    sumOfpoint,
-    addPoint,
-  } = useContext(ChallengeContext);
+const ChallengeCard = ({ id, challengeName }) => {
+  const { challengeData } = useContext(ChallengeContext);
   var contentName;
 
-  if (id === 1) {
-    contentName = setClassName(challengeMission.Mission1);
-    if (contentName === "") {
-      return (
-        <div className={`challenge-card${contentName}`}>
-          <div className="challenge-title">오늘의 챌린지</div>
-          <div className="challenge-text">{challengeMission.Mission1}</div>
-        </div>
-      );
-    } else {
-      return (
-        <div className={`challenge-card${contentName}`}>
-          <div className="challenge-text">{challengeMission.Mission1}</div>
-        </div>
-      );
-    }
-  }
+  return (
+    <div className={`challenge-card`}>
+      <div className="challenge-title">오늘의 챌린지</div>
+      <div className="challenge-text">{challengeName}</div>
+    </div>
+  );
 
-  if (id === 2) {
-    contentName = setClassName(challengeMission.Mission2);
-    if (contentName === "") {
-      return (
-        <div className={`challenge-card${contentName}`}>
-          <div className="challenge-title">오늘의 챌린지</div>
-          <div className="challenge-text">{challengeMission.Mission2}</div>
-        </div>
-      );
-    } else {
-      return (
-        <div className={`challenge-card${contentName}`}>
-          <div className="challenge-text">{challengeMission.Mission2}</div>
-        </div>
-      );
-    }
-  }
+  // if (id === challengeData.challenge1.id) {
+  //   contentName = setClassName(challengeData.challenge1.challengeName);
+  //   if (contentName === "") {
+  //     return (
+  //       <div className={`challenge-card${contentName}`}>
+  //         <div className="challenge-title">오늘의 챌린지</div>
+  //         <div className="challenge-text">
+  //           {challengeData.challenge1.challengeName}
+  //         </div>
+  //       </div>
+  //     );
+  //   } else {
+  //     return (
+  //       <div className={`challenge-card${contentName}`}>
+  //         <div className="challenge-text">
+  //           {challengeData.challenge1.challengeName}
+  //         </div>
+  //       </div>
+  //     );
+  //   }
+  // }
 
-  if (id === 3) {
-    contentName = setClassName(challengeMission.Mission3);
-    if (contentName === "") {
-      return (
-        <div className={`challenge-card${contentName}`}>
-          <div className="challenge-title">오늘의 챌린지</div>
-          <div className="challenge-text">{challengeMission.Mission3}</div>
-        </div>
-      );
-    } else {
-      return (
-        <div className={`challenge-card${contentName}`}>
-          <div className="challenge-text">{challengeMission.Mission3}</div>
-        </div>
-      );
-    }
-  }
+  // if (id === challengeData.challenge2.id) {
+  //   contentName = setClassName(challengeData.challenge2.challengeName);
+  //   if (contentName === "") {
+  //     return (
+  //       <div className={`challenge-card${contentName}`}>
+  //         <div className="challenge-title">오늘의 챌린지</div>
+  //         <div className="challenge-text">
+  //           {challengeData.challenge2.challengeName}
+  //         </div>
+  //       </div>
+  //     );
+  //   } else {
+  //     return (
+  //       <div className={`challenge-card${contentName}`}>
+  //         <div className="challenge-text">
+  //           {challengeData.challenge2.challengeName}
+  //         </div>
+  //       </div>
+  //     );
+  //   }
+  // }
+
+  // if (id === challengeData.challenge3.id) {
+  //   contentName = setClassName(challengeData.challenge3.challengeName);
+  //   if (contentName === "") {
+  //     return (
+  //       <div className={`challenge-card${contentName}`}>
+  //         <div className="challenge-title">오늘의 챌린지</div>
+  //         <div className="challenge-text">
+  //           {challengeData.challenge3.challengeName}
+  //         </div>
+  //       </div>
+  //     );
+  //   } else {
+  //     return (
+  //       <div className={`challenge-card${contentName}`}>
+  //         <div className="challenge-text">
+  //           {challengeData.challenge3.challengeName}
+  //         </div>
+  //       </div>
+  //     );
+  //   }
+  // }
 };
 
 export default ChallengeCard;
