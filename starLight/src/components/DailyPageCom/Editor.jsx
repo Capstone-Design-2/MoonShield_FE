@@ -51,50 +51,24 @@ const Editor = ({ initData, onSubmit }) => {
     onSubmit(input);
   };
 
-  const onSelectEvent = (item) => {
-    // setInput((prev) => ({
-    //   ...input,
-    //   ...prev,
-    //   eventId: item.eventId,
-    //   eventName: input.eventName,
-    //   HashTag: Array.isArray(prev.HashTag)
-    //     ? prev.HashTag.map((tag, index) => (index === 0 ? item.eventName : tag))
-    //     : ["", item.eventName],
-    // }));
-    addHashTag(item.eventName);
-  };
-
-  const onSelectFeeling = (item) => {
-    // setInput((prev) => ({
-    //   ...input,
-    //   feelingId: item.feelingId,
-    //   feelingName: input.feelingName,
-    //   HashTag: Array.isArray(prev.HashTag)
-    //     ? prev.HashTag.map((tag, index) =>
-    //         index === 0 ? item.feelingName : tag
-    //       )
-    //     : ["", item.feelingName],
-    // }));
-    addHashTag(item.feelingName);
-  };
-
-  const addHashTag = (tag) => {
+  const toggleHashTag = (item, type) => {
     setInput((prev) => {
-      // 해시 태그가 이미 배열에 있다면 추가하지 않음
-      if (prev.HashTag.includes(tag)) return prev;
+      const tagName = type === "event" ? item.eventName : item.feelingName;
 
+      // 이미 존재하면 제거
+      if (prev.HashTag.includes(tagName)) {
+        return {
+          ...prev,
+          HashTag: prev.HashTag.filter((tag) => tag !== tagName),
+        };
+      }
+
+      // 존재하지 않으면 추가
       return {
         ...prev,
-        HashTag: [...prev.HashTag, tag],
+        HashTag: [...prev.HashTag, tagName],
       };
     });
-  };
-
-  const removeHashTag = (tag) => {
-    setInput((prev) => ({
-      ...prev,
-      HashTag: prev.HashTag.filter((t) => t !== tag), // 선택된 태그 제거
-    }));
   };
 
   console.log(input.HashTag);
@@ -137,39 +111,28 @@ const Editor = ({ initData, onSubmit }) => {
       {/* HashTag 1 */}
 
       <section className="event_content_section">
-        {/* <h4>있었던 일</h4> */}
-
         <div className="event_list_wrapper">
           {eventList.map((item) => (
             <EventItem
-              onClick={() => onSelectEvent(item)} // 이벤트 선택 시 기본 텍스트 설정
+              onClick={() => toggleHashTag(item, "event")} // 이벤트 선택 시 기본 텍스트 설정
               key={item.eventId}
               {...item}
-              isSelected={item.eventId === input.eventId}
+              isSelected={input.HashTag.includes(item.eventName)}
             />
           ))}
         </div>
-
-        {/* <textarea
-          name="eventContent"
-          value={input.eventContent}
-          onChange={onChangeInput}
-          placeholder="~한 일이 있어서..."
-        ></textarea> */}
       </section>
 
       {/* HashTag 2 */}
 
       <section className="feeling_content_section">
-        {/* <h4>오늘 느낀 감정</h4> */}
-
         <div className="feeling_list_wrapper">
           {feelingList.map((item) => (
             <FeelingItem
-              onClick={() => onSelectFeeling(item)} // 이벤트 선택 시 기본 텍스트 설정
+              onClick={() => toggleHashTag(item, "feeling")} // 이벤트 선택 시 기본 텍스트 설정
               key={item.feelingId}
               {...item}
-              isSelected={item.feelingId === input.feelingId}
+              isSelected={input.HashTag.includes(item.feelingName)}
             />
           ))}
         </div>
@@ -180,29 +143,10 @@ const Editor = ({ initData, onSubmit }) => {
             {input.HashTag.map((tag, index) => (
               <span key={index} className="hashtag">
                 {tag}{" "}
-                <button
-                  onClick={() => removeHashTag(tag)} // 태그 제거 버튼
-                  style={{
-                    border: "none",
-                    borderRadius: 15,
-                    background: "red",
-                    color: "black",
-                    cursor: "pointer",
-                  }}
-                >
-                  ✖{" "}
-                </button>
               </span>
             ))}
           </div>
         </section>
-
-        {/* <textarea
-          name="feelingContent"
-          value={input.feelingContent}
-          onChange={onChangeInput}
-          placeholder="~했어..."
-        ></textarea> */}
       </section>
 
       <textarea

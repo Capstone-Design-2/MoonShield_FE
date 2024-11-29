@@ -5,7 +5,9 @@ const FeelingItem = ({ feelingId, feelingName, isSelected, onClick }) => {
     <div
       onClick={onClick}
       className={`FeelingItem ${
-        isSelected ? `FeelingItem_on_${feelingId}` : ""
+        isSelected
+          ? `FeelingItem_on_${feelingId}`
+          : `FeelingItem_off_${feelingId}`
       }`}
     >
       <div className="feeling_name">{feelingName}</div>
