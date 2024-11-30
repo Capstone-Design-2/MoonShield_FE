@@ -17,16 +17,6 @@ const ChallengeCheckbox = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const {
-    challengeMission,
-    challengeId,
-    pointsOfMission,
-    sumOfpoint,
-    addPoint,
-    completedChallenges,
-    challengeData,
-  } = useContext(ChallengeContext);
-
   if (loading) return <div>로딩중..</div>; // 로딩 상태가 활성화 됐을때 렌더링 될 문구
   if (error) return <div>에러가 발생했습니다</div>; // 에러 발생시 렌더링 될 문구
   if (!challenge) return null; // users 값이 없을 때에는 null 을 보여주도록 처리
@@ -34,10 +24,9 @@ const ChallengeCheckbox = ({
   const handleAddPoint = async (id, points) => {
     try {
       setError(null);
-      setChallenge(null);
       setLoading(true);
       await axios.post(
-        `http://www.0429.site/api/v1/challenges/${id}`,
+        `http://www.0429.site:8081/api/v1/challenges/${id}`,
         {},
         {
           headers: {
@@ -50,7 +39,6 @@ const ChallengeCheckbox = ({
       onComplete(id);
     } catch (e) {
       setError(e);
-      console.log(e);
     } finally {
       setLoading(false);
     }
@@ -71,4 +59,5 @@ const ChallengeCheckbox = ({
     </div>
   );
 };
+
 export default ChallengeCheckbox;

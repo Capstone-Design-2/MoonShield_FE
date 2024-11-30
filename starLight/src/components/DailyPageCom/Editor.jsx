@@ -4,6 +4,8 @@ import EventItem from "./EventItem";
 import FeelingItem from "./FeelingItem";
 import Button from "./Button";
 
+import axios from "axios";
+
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { emotionList } from "../../util/constants";
@@ -24,15 +26,24 @@ const Editor = ({ initData, onSubmit }) => {
   useEffect(() => {
     if (initData) {
       setInput({
-        ...initData,
-        createdDate: new Date(Number(initData.createdDate)),
+        id: initData.id,
+        createdDate: new Date(),
+        emotionId: initData.emotionId,
+        Content: initData.content,
+        HashTag: initData.hashTag,
       });
     }
   }, [initData]);
 
+  console.log(initData);
+
+  const [Data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const onChangeInput = (e) => {
-    console.log(e.target.name); // 입력이 들어온 요소
-    console.log(e.target.value); // 입력된 값
+    // console.log(e.target.name); // 입력이 들어온 요소
+    // console.log(e.target.value); // 입력된 값
 
     let name = e.target.name;
     let value = e.target.value;
@@ -48,6 +59,7 @@ const Editor = ({ initData, onSubmit }) => {
   };
 
   const onClickSubmitButton = () => {
+    console.log(input);
     onSubmit(input);
   };
 
@@ -71,11 +83,9 @@ const Editor = ({ initData, onSubmit }) => {
     });
   };
 
-  console.log(input.HashTag);
-
   return (
     <div className="Editor">
-      <section className="date_section">
+      {/* <section className="date_section">
         <h4>오늘의 날짜 : </h4>
 
         <input
@@ -84,7 +94,7 @@ const Editor = ({ initData, onSubmit }) => {
           onChange={onChangeInput}
           value={getStringedDate(input.createdDate)}
         ></input>
-      </section>
+      </section> */}
 
       <section className="emotion_section">
         <h4>오늘의 기분</h4>
@@ -109,7 +119,6 @@ const Editor = ({ initData, onSubmit }) => {
       </section>
 
       {/* HashTag 1 */}
-
       <section className="event_content_section">
         <div className="event_list_wrapper">
           {eventList.map((item) => (
@@ -124,7 +133,6 @@ const Editor = ({ initData, onSubmit }) => {
       </section>
 
       {/* HashTag 2 */}
-
       <section className="feeling_content_section">
         <div className="feeling_list_wrapper">
           {feelingList.map((item) => (

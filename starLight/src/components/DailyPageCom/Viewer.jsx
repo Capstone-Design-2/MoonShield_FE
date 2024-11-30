@@ -3,7 +3,7 @@ import { getEmotionImage } from "../../util/get-emotion-image";
 import "./Viewer.css";
 import { emotionList } from "../../util/constants";
 
-const Viewer = ({ emotionId, Content, HashTag }) => {
+const Viewer = ({ emotionId, Content, hashTag }) => {
   const emotionItem = emotionList.find(
     (item) => String(item.emotionId) === String(emotionId)
   );
@@ -22,7 +22,7 @@ const Viewer = ({ emotionId, Content, HashTag }) => {
         <div className="content_wrapper">
           <p>{Content}</p>
         </div>
-        <div className="hashTag">{HashTag}</div>
+        <div className="hashTag">{hashTag}</div>
       </section>
     </div>
   );

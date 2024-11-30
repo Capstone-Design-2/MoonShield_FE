@@ -9,8 +9,6 @@ const DiaryList = ({ data, Disabled }) => {
   const nav = useNavigate();
   const [sortType, setSortType] = useState("latest");
 
-  console.log(Disabled);
-
   const onChangeSortType = (e) => {
     setSortType(e.target.value);
   };
@@ -18,9 +16,9 @@ const DiaryList = ({ data, Disabled }) => {
   const getSortedDate = () => {
     return data.toSorted((a, b) => {
       if (sortType === "oldest") {
-        return Number(a.createdDate - b.createdDate);
+        return Number(a.date - b.date);
       } else {
-        return Number(b.createdDate - a.createdDate);
+        return Number(b.date - a.date);
       }
     });
   };
@@ -28,11 +26,11 @@ const DiaryList = ({ data, Disabled }) => {
   const sortedData = getSortedDate();
 
   const isTodayWrittenInData = () => {
-    const today = new Date().setHours(0, 0, 0, 0);
+    const todayString = `${new Date().getFullYear()}${
+      new Date().getMonth() + 1
+    }${String(new Date().getDate()).padStart(2, "0")}`;
 
-    return data.some(
-      (item) => new Date(item.createdDate).setHours(0, 0, 0, 0) === today
-    );
+    return data.some((item) => item.date === todayString);
   };
 
   const buttonDisabled = isTodayWrittenInData();
@@ -53,7 +51,7 @@ const DiaryList = ({ data, Disabled }) => {
       </div>
       <div className="list_wrapper">
         {sortedData.map((item) => (
-          <DiaryItem key={item.id} {...item} />
+          <DiaryItem key={item.id} data={item} />
         ))}
       </div>
     </div>

@@ -19,7 +19,7 @@ const ChallengePage = () => {
         setChallenge(null);
         setLoading(true);
         const fetchChallege = await axios.get(
-          "http://www.0429.site/api/v1/challenges"
+          "http://www.0429.site:8081/api/v1/challenges"
         );
         setChallenge(fetchChallege.data.data.challenges);
         setSumOfPoint(fetchChallege.data.data.sumOfPoint);
@@ -42,17 +42,12 @@ const ChallengePage = () => {
         challenge.id === id ? { ...challenge, isCompleted: true } : challenge
       )
     );
-    forceRender();
-  };
-
-  const forceRender = () => {
-    setChallenge((prev) => [...prev]);
   };
 
   return (
     <div className="challenge-page">
       <header className="header">
-        <h1 className="header-title">{`CHALLENGE /// ${sumOfPoint}`}</h1>
+        <h1 className="header-title">{`CHALLENGE`}</h1>
       </header>
       {challenge.map((challenge) => (
         <div key={challenge.id}>

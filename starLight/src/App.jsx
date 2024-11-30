@@ -246,8 +246,8 @@ function App() {
 
               <Route path="/daily" element={<DailyPage />}></Route>
               <Route path="/daily/new" element={<New />}></Route>
-              <Route path="/daily/diary/:id" element={<Diary />}></Route>
-              <Route path="/daily/edit/:id" element={<Edit />}></Route>
+              <Route path="/daily/diary/:date" element={<Diary />}></Route>
+              <Route path="/daily/edit/:date" element={<Edit />}></Route>
 
               <Route path="/challenge" element={<ChallengePage />}></Route>
 
