@@ -9,8 +9,8 @@ const Chatbot = () => {
   const chatDivRef = useRef(null);
   const typingSpeed = 50; // 타이핑 속도 (ms)
 
-  const apiSendUri = "http://www.0429.site/api/v1/chats/query"; // POST 요청: AI 메시지 전송
-  const apiReceiveUri = "http://www.0429.site/api/v1/chats/answer"; // GET 요청: AI 응답 가져오기
+  const apiSendUri = "http://www.0429.site:8081/api/v1/chats/query"; // POST 요청: AI 메시지 전송
+  const apiReceiveUri = "http://www.0429.site:8081/api/v1/chats/answer"; // GET 요청: AI 응답 가져오기
 
   const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
