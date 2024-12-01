@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // useNavigate 훅 추가
+import Cookies from "js-cookie"; // js-cookie 추가
 import "./Login.css"; // CSS 파일 가져오기
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    id: "", // 수정: 키 이름을 id로 변경
+    id: "",
     password: "",
   }); // 사용자의 입력 데이터를 저장
   const [message, setMessage] = useState(""); // 응답 메시지 표시용
   const [loading, setLoading] = useState(false); // 로딩 상태 표시
+
+  const navigate = useNavigate(); // useNavigate 훅 초기화
 
   // 입력값 변경 처리
   const handleChange = (e) => {
@@ -22,19 +26,33 @@ const Login = () => {
     setMessage(""); // 메시지 초기화
 
     try {
-      const response = await fetch("http://www.0429.site/api/v1/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json", // JSON 요청
-        },
-        body: JSON.stringify(formData), // 요청 데이터
-      });
+      const response = await fetch(
+        "http://www.0429.site:8081/api/v1/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json", // JSON 요청
+          },
+          body: JSON.stringify(formData), // 요청 데이터
+        }
+      );
 
       if (response.ok) {
         const data = await response.json(); // 응답 데이터를 JSON으로 변환
-        setMessage(`Login Successful! Token: ${data.accessToken}`);
-        console.log("Access Token:", data.accessToken);
+        setMessage("Login Successful!");
+
+        // Access Token을 쿠키에 저장
+        Cookies.set("accessToken", data.accessToken, {
+          expires: 1, // 1일 후 만료
+          secure: true, // HTTPS에서만 사용
+          sameSite: "strict", // CSRF 방지
+        });
+
+        console.log("Access Token saved to cookies:", data.accessToken);
         console.log("Token Expiry:", data.expiredTime);
+
+        // "/" 페이지로 이동
+        navigate("/");
       } else {
         const errorData = await response.json(); // 에러 응답을 JSON으로 변환
         setMessage(`Login Failed: ${errorData.message || "Unknown error"}`);
@@ -52,13 +70,13 @@ const Login = () => {
       <div className="login-profile-container">
         <div className="login-avatar"></div>
         <div className="login-profile-info">
-          <h2>Welcome Back!</h2>
-          <p>Please login to your account</p>
+          <h2>MoonShield</h2>
+          <p>당신의 마음을 비춰주는 달</p>
         </div>
       </div>
       <form className="login-login-form" onSubmit={handleSubmit}>
         <div className="login-form-group">
-          <label htmlFor="id">Login ID</label> {/* 수정: htmlFor 값 변경 */}
+          <label htmlFor="id">ID</label> {/* 수정: htmlFor 값 변경 */}
           <input
             type="text"
             id="id" // 수정: id로 변경
