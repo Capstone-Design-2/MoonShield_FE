@@ -21,7 +21,7 @@ const ChallengeCheckbox = ({
   if (error) return <div>에러가 발생했습니다</div>; // 에러 발생시 렌더링 될 문구
   if (!challenge) return null; // users 값이 없을 때에는 null 을 보여주도록 처리
 
-  const handleAddPoint = async (id, points) => {
+  const handleAddPoint = async (id) => {
     try {
       setError(null);
       setLoading(true);

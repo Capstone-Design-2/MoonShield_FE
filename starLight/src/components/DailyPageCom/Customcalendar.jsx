@@ -2,9 +2,16 @@ import React, { useState } from "react";
 import "./Customcalendar.css";
 import { getStringedDate } from "../../util/get-stringed-date";
 
-const Customcalendar = ({ records = [] }) => {
-  // 캘린더에 표시할 일수 (1일부터 32일까지)
-  const days = Array.from({ length: 31 }, (_, i) => i + 1);
+const Customcalendar = ({ records = [], pivotdate }) => {
+  // 캘린더에 표시할 일수 (1일부터 31일까지)
+
+  const length = new Date(
+    pivotdate.getFullYear(),
+    pivotdate.getMonth() + 1,
+    0
+  ).getDate();
+
+  const days = Array.from({ length: length }, (_, i) => i + 1);
 
   // 각 날짜의 색상을 결정하는 함수
   const getColorForDay = (emotionId) => {

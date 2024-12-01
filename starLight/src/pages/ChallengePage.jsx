@@ -64,15 +64,6 @@ const ChallengePage = () => {
           />
         </div>
       ))}
-
-      {/* <ChallengeCard id={challengeData.challenge1.id} />
-      <ChallengeCheckbox id={challengeData.challenge1.id} />
-
-      <ChallengeCard id={challengeData.challenge2.id} />
-      <ChallengeCheckbox id={challengeData.challenge2.id} />
-
-      <ChallengeCard id={challengeData.challenge3.id} />
-      <ChallengeCheckbox id={challengeData.challenge3.id} /> */}
     </div>
   );
 };

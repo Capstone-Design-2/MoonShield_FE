@@ -44,12 +44,13 @@ const New = () => {
     }
     setLoading(false);
 
-    onCreate(
-      input.createdDate.getTime(),
-      input.emotionId,
-      input.Content,
-      input.HashTag
-    );
+    // // 웹 스토리지 상에서 테스트 코드
+    // onCreate(
+    //   input.createdDate.getTime(),
+    //   input.emotionId,
+    //   input.Content,
+    //   input.HashTag
+    // );
     nav("/daily", { replace: true });
   };
 

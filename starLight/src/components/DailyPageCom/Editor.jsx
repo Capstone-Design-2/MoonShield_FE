@@ -35,16 +35,11 @@ const Editor = ({ initData, onSubmit }) => {
     }
   }, [initData]);
 
-  console.log(initData);
-
   const [Data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const onChangeInput = (e) => {
-    // console.log(e.target.name); // 입력이 들어온 요소
-    // console.log(e.target.value); // 입력된 값
-
     let name = e.target.name;
     let value = e.target.value;
 
@@ -85,17 +80,6 @@ const Editor = ({ initData, onSubmit }) => {
 
   return (
     <div className="Editor">
-      {/* <section className="date_section">
-        <h4>오늘의 날짜 : </h4>
-
-        <input
-          name="createdDate"
-          type="date"
-          onChange={onChangeInput}
-          value={getStringedDate(input.createdDate)}
-        ></input>
-      </section> */}
-
       <section className="emotion_section">
         <h4>오늘의 기분</h4>
 

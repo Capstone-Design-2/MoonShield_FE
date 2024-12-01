@@ -110,7 +110,7 @@ const Home = () => {
         leftChild={<Button text={"<"} onClick={onDecreasedMonth} />}
         rightChild={<Button text={">"} onClick={onIncreasedMonth} />}
       />
-      <Customcalendar records={Data}></Customcalendar>
+      <Customcalendar records={Data} pivotdate={pivotdate}></Customcalendar>
       <DiaryList data={Data} Disabled={!Disabled} />
     </div>
   );

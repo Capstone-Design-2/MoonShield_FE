@@ -68,7 +68,8 @@ const Edit = () => {
     fetchDaily();
 
     if (window.confirm("정말 삭제하시겠나요? 복구할 수 없습니다.")) {
-      onDelete(params.id);
+      // // 웹 스토리지 상에서 테스트 코드
+      // onDelete(params.id);
       nav("/daily", { replace: true });
     }
   };
@@ -102,13 +103,14 @@ const Edit = () => {
     fetchDaily();
 
     if (window.confirm("정말 수정할까요?")) {
-      onUpdate(
-        params.id,
-        input.createdDate.getTime(),
-        input.emotionId,
-        input.Content,
-        input.HashTag
-      );
+      // // 웹 스토리지 상에서 테스트 코드
+      // onUpdate(
+      //   params.id,
+      //   input.createdDate.getTime(),
+      //   input.emotionId,
+      //   input.Content,
+      //   input.HashTag
+      // );
       nav("/daily", { replace: true });
     }
   };
