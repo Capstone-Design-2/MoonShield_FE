@@ -1,23 +1,39 @@
-import Cookies from "js-cookie"; // js-cookie로 쿠키 읽기
-
 export const apiClient = async (endpoint, options = {}) => {
-  const token = Cookies.get("accessToken"); // 쿠키에서 Access Token 가져오기
+  const token = localStorage.getItem("accessToken");
+  const expiredTime = localStorage.getItem("accessExpiredTime");
+
+  // 토큰 만료 확인
+  if (expiredTime && new Date().getTime() > Number(expiredTime)) {
+    console.error("Access Token has expired. Redirecting to login...");
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("accessExpiredTime");
+    window.location.href = "/login"; // 로그인 페이지로 리다이렉트
+    return;
+  }
 
   const headers = {
     "Content-Type": "application/json",
-    ...(token && { Authorization: `Bearer ${token}` }), // Access Token 추가
+    ...(token && { Authorization: `Bearer ${token}` }),
   };
 
   const config = {
     ...options,
-    headers,
+    headers: {
+      ...headers,
+      ...options.headers,
+    },
   };
 
   const response = await fetch(endpoint, config);
 
   if (!response.ok) {
-    // 요청 실패 시 에러 던지기
-    throw new Error(`Error: ${response.status}`);
+    if (response.status === 401) {
+      console.error("Unauthorized. Redirecting to login...");
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("accessExpiredTime");
+      window.location.href = "/login";
+    }
+    throw new Error(`Error: ${response.status} - ${response.statusText}`);
   }
 
   return response.json();

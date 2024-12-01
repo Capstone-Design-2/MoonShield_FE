@@ -41,12 +41,8 @@ const Login = () => {
         const data = await response.json(); // 응답 데이터를 JSON으로 변환
         setMessage("Login Successful!");
 
-        // Access Token을 쿠키에 저장
-        Cookies.set("accessToken", data.accessToken, {
-          expires: 1, // 1일 후 만료
-          secure: true, // HTTPS에서만 사용
-          sameSite: "strict", // CSRF 방지
-        });
+        localStorage.setItem("accessToken", data.data.accessToken);
+        localStorage.setItem("accessExpiredTime", data.data.accessExpiredTime);
 
         console.log("Access Token saved to cookies:", data.accessToken);
         console.log("Token Expiry:", data.expiredTime);

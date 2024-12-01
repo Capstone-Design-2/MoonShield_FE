@@ -9,6 +9,8 @@ const ProEdit = () => {
   const [loading, setLoading] = useState(true); // 로딩 상태 관리
   const navigate = useNavigate(); // 네비게이션 훅
 
+  const accessToken = localStorage.getItem("accessToken");
+
   useEffect(() => {
     const fetchUserPoints = async () => {
       try {
