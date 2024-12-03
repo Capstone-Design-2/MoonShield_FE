@@ -23,4 +23,5 @@
   transition: background-color 0.3s ease;
   width: 100%;
   height: 50px; /* 셀 높이 */
+  cursor: pointer;
 }

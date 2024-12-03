@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Customcalendar.css";
-import { getStringedDate } from "../../util/get-stringed-date";
 
 const Customcalendar = ({ records = [], pivotdate }) => {
-  // 캘린더에 표시할 일수 (1일부터 31일까지)
+  const nav = useNavigate();
 
+  // 캘린더에 표시할 일수 (1일부터 31일까지)
   const length = new Date(
     pivotdate.getFullYear(),
     pivotdate.getMonth() + 1,
@@ -47,6 +48,16 @@ const Customcalendar = ({ records = [], pivotdate }) => {
                 ? getColorForDay(recordForDay.emotionId) // 기록이 있으면 색상 결정
                 : "#ffffff", // 기록이 없으면 기본 배경색
             }}
+            onClick={
+              recordForDay
+                ? () =>
+                    nav(
+                      `/daily/diary/${pivotdate.getFullYear()}${
+                        pivotdate.getMonth() + 1
+                      }${day}`
+                    )
+                : undefined
+            }
           >
             {day}
           </div>
